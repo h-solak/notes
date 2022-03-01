@@ -92,26 +92,28 @@ const AddNote = ({ handleAddNote }) => {
       <input
         id="title-input"
         className="hide"
-        placeholder="Title"
+        placeholder="&#x270D;Add a title"
         value={noteTitle}
         onChange={handleTitleChange}
         autoComplete="off"
+        title="Title"
       />
       <span onClick={focusOnInput} className="add-container">
         <div className="input-container">
-          <div className="add-start">
+          <div className="add-start" title="Note it!">
             <FaPencilAlt id="tasks-icon-left" className="tasks-icon" />
             <FaTasks id="checkbox-icon-left" className="tasks-icon hide" />
           </div>
           <textarea
             id="task-text"
             className="add-input"
-            placeholder="Add something here..."
+            placeholder="Add your notes or tasks here..."
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             rows="1"
             value={noteText}
             onChange={handleTextChange}
+            title="What do you have in mind?"
           />
         </div>
         <div className="note-options">
@@ -119,11 +121,13 @@ const AddNote = ({ handleAddNote }) => {
             id="note"
             onClick={handleNoteClick}
             className="type-icon type-icon-active"
+            title="Note"
           />
           <FaRegCheckSquare
             id="checkbox"
             onClick={handleCheckBoxClick}
             className="type-icon"
+            title="Checkbox"
           />
         </div>
       </span>

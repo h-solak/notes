@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import NotesList from "./components/NotesList";
+import toast, { Toaster } from "react-hot-toast";
+
 function App() {
   const [notes, setNotes] = useState([]);
   useEffect(() => {
@@ -18,8 +20,16 @@ function App() {
     let isNote = null;
     if (!noteArray[2]) {
       isNote = "checkbox";
+      toast("New task is added!", {
+        icon: "🎯",
+        position: "top-right",
+      });
     } else {
       isNote = "note";
+      toast("New note is added!", {
+        icon: "✍️",
+        position: "top-right",
+      });
     }
     const date = new Date();
     const newNote = {
@@ -37,6 +47,10 @@ function App() {
   const deleteNote = (id) => {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
+    toast("Successfully deleted!", {
+      icon: "🗑️",
+      position: "top-right",
+    });
   };
 
   const checkNote = (id) => {
@@ -45,19 +59,39 @@ function App() {
     selectedNote[0].checked = !selectedNote[0].checked;
     allNotes = [...allNotes, selectedNote[0]];
     setNotes(allNotes);
+    if (selectedNote[0].checked) {
+      let congrats = [
+        "Nice one!",
+        "Bravo!",
+        "Cool stuff!",
+        "Way to go!",
+        "Nice!",
+        "Congrats!",
+        "One step closer!",
+        "👏Cooool!",
+      ];
+      let randomNumber = Math.floor(Math.random() * congrats.length);
+      toast.success(congrats[randomNumber], {
+        position: "top-right",
+      });
+    }
   };
 
   const copyNote = (id) => {
     const selectedNote = notes.filter((note) => note.id === id);
     let selectedText = selectedNote[0].text;
     navigator.clipboard.writeText(selectedText);
+    toast.success("Copied to the clipboard!", {
+      position: "top-right",
+    });
   };
-
-  //LET USER CHOOSE THE COLOR OF THE NEW NOTE
 
   return (
     <>
+      <Toaster />
+
       <h1>NOTES</h1>
+
       <NotesList
         notes={notes}
         handleAddNote={addNote}

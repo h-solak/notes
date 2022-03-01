@@ -14,6 +14,12 @@ h1 {
     text-align: center;
 }
 
+#page-title-tooltip {
+    font-size: 12px;
+    background-color: #000;
+    z-index: 1;
+}
+
 .add-container {
     width: 50%;
     margin: auto;
@@ -148,10 +154,11 @@ h1 {
 
 
 /*
+possible note backgrounds
 #2ecc71
 #e74c3c
 #bdc3c7
-#f1c40f yellow
+#f1c40f 
 #ffeaa7
 #00cec9
 #55efc4
@@ -171,7 +178,7 @@ h1 {
     justify-content: left;
     font-size: 18px;
     font-weight: 500;
-    padding-left: 16px;
+    padding-left: 4px;
 }
 
 .note-text {
@@ -237,6 +244,9 @@ h1 {
 }
 
 @media screen and (max-width: 1200px) {
+    * {
+        font-size: 12px;
+    }
     h1 {
         font-size: 28px;
     }
@@ -277,6 +287,9 @@ h1 {
 }
 
 @media screen and (max-width: 992px) {
+    * {
+        font-size: 10px;
+    }
     h1 {
         font-size: 24px;
     }

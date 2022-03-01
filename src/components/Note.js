@@ -51,10 +51,12 @@ const Note = ({
           <FiCopy
             className="copy-icon icon-hvr"
             onClick={() => handleCopyNote(id)}
+            title="Copy"
           />
           <AiFillDelete
             className="note-delete icon-hvr"
             onClick={() => handleDeleteNote(id)}
+            title="Delete"
           />
         </div>
       </div>
